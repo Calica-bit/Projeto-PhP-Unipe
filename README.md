@@ -8,7 +8,6 @@ Na parte de Admin do site, teremos opções de mudar os preços dos cortes, alte
 O grupo é composto por:
 
 - Cauã Limeira
-- Walter Martins
 - Marcos Andrade
 - Eduardo Romao
 - Wagner Junior
