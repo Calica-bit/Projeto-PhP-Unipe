@@ -1,0 +1,162 @@
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0d0d0d;
+    color: #f2f2f2;
+}
+
+/* CORES */
+:root {
+    --gold: #cfa66b;
+    --dark: #111;
+    --darker: #0a0a0a;
+}
+
+/* HEADER */
+header {
+    background: #000;
+    padding: 25px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--gold);
+}
+header h1 {
+    font-size: 42px;
+    color: var(--gold);
+    letter-spacing: 3px;
+}
+nav {
+    margin-top: 15px;
+}
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: .3s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+nav a:hover {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+/* BANNER */
+.banner {
+    height: 500px;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+        url('img/banner.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.banner h2 {
+    font-size: 55px;
+    color: var(--gold);
+    text-shadow: 3px 3px 8px #000;
+    max-width: 900px;
+    animation: fade 2s ease forwards;
+}
+@keyframes fade {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+.text-center {
+    text-align: center;
+}
+.sec-title {
+    text-align: center;
+    font-size: 38px;
+    color: var(--gold);
+    margin-bottom: 35px;
+}
+.sec-title::after {
+    content: "";
+    width: 70px;
+    height: 3px;
+    background: var(--gold);
+    margin: 10px auto 0;
+    display: block;
+}
+
+/* SERVIÇOS */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+.card {
+    background: var(--dark);
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s;
+}
+.card:hover {
+    transform: scale(1.06);
+    border-color: var(--gold);
+}
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.card-content {
+    padding: 20px;
+}
+.card-content h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.card-content p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* TABELA DE PREÇOS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 18px;
+    border: 1px solid #333;
+    font-size: 20px;
+}
+th {
+    background: var(--dark);
+    color: var(--gold);
+}
+td {
+    background: #1a1a1a;
+}
+
+/* CONTATO */
+.contact-box {
+    text-align: center;
+    font-size: 22px;
+    color: #ddd;
+    line-height: 2;
+}
+
+/* FOOTER */
+footer {
+    background: #000;
+    border-top: 1px solid var(--gold);
+    padding: 25px;
+    text-align: center;
+    font-size: 16px;
+    color: #bbb;
+}
