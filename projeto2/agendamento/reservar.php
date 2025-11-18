@@ -1,18 +1,25 @@
 <?php
+// --- Carrega o arquivo JSON ---
 $arquivo = 'horarios.json';
 $horarios = json_decode(file_get_contents($arquivo), true);
 
-if(isset($_GET['hora'])){
-    $hora = $_GET['hora'];
-    if(isset($horarios[$hora]) && $horarios[$hora] == 'disponivel'){
-        $horarios[$hora] = 'indisponivel';
-        file_put_contents($arquivo, json_encode($horarios, JSON_PRETTY_PRINT));
-        $mensagem = "Horário $hora reservado com sucesso!";
-    } else {
-        $mensagem = "Este horário já não está disponível!";
-    }
+// Recebe o dia e hora enviados pela URL
+$dia = $_GET['dia'] ?? null;
+$hora = $_GET['hora'] ?? null;
+
+// Verifica se dia e hora existem
+if (!$dia || !$hora || !isset($horarios[$dia][$hora])) {
+    die("Horário inválido!");
+}
+
+// Se já estiver ocupado, apenas avisa
+if ($horarios[$dia][$hora] === "ocupado") {
+    $mensagem = "Este horário já foi reservado.";
 } else {
-    $mensagem = "Nenhum horário selecionado!";
+    // Marca como ocupado e salva
+    $horarios[$dia][$hora] = "ocupado";
+    file_put_contents($arquivo, json_encode($horarios, JSON_PRETTY_PRINT));
+    $mensagem = "Horário reservado com sucesso!";
 }
 ?>
 
@@ -22,22 +29,64 @@ if(isset($_GET['hora'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva Confirmada</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="agenda.css">
-</head>
-<body>
-<header>
-    <h1>Reserva de Horário</h1>
-    <nav>
-        <a href="horarios.php">Voltar</a>
-    </nav>
-</header>
 
-<section class="agendar-container">
-    <h2 class="sec-title">Status da Reserva</h2>
-    <p class="text-center" style="font-size: 20px; color: #d4a056;"><?= $mensagem ?></p>
-    <a href="horarios.php" class="btn-agendar">Voltar aos Horários</a>
-</section>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 60px;
+            background: #111;
+            color: #fff;
+        }
+
+        .box {
+            background: #1c1c1c;
+            border-radius: 12px;
+            padding: 35px;
+            display: inline-block;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #f8d000;
+        }
+
+        .info {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            background: #f8d000;
+            color: #000;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: #ffe766;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1><?= $mensagem ?></h1>
+
+        <p class="info">
+            <strong>Dia:</strong> <?= ucfirst($dia) ?><br>
+            <strong>Horário:</strong> <?= $hora ?>
+        </p>
+
+        <a href="horarios.php">Voltar aos horários</a>
+    </div>
 
 </body>
 </html>

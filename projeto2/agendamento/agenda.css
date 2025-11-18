@@ -1,46 +1,3 @@
-/* HEADER */
-header {
-    background-color: #1a1a1c;
-    padding: 20px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-}
-
-header h1 {
-    color: #d4a056;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-header nav a {
-    color: #f5f5f5;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-header nav a:hover {
-    color: #d4a056;
-}
-
-/* BANNER */
-.banner {
-    background: url('../img/banner.jpg') center/cover no-repeat;
-    padding: 120px 20px;
-    text-align: center;
-}
-
-.banner h2 {
-    color: #d4a056;
-    font-size: 36px;
-    text-shadow: 2px 2px 5px #000;
-}
-
-
 /* =========================================================
    RESET & VARIÁVEIS
 ========================================================= */
@@ -79,19 +36,15 @@ body {
     color: var(--color-light);
     font-family: var(--font-main);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    padding-top: 0; /* reserve if header is sticky */
+    padding-top: 0;
 }
 
 /* =========================================================
-   HEADER ELEGANTE (INTEGRADO E FORTE)
-   - Usei seletores com maior especificidade para evitar override.
-   - position: sticky garante visibilidade ao rolar.
+   HEADER
 ========================================================= */
-header.header, .header {
+.header {
     width: 100%;
-    background-color: #0d0d0d; /* discreto, quase preto */
+    background-color: #0d0d0d;
     padding: 18px 28px;
     border-bottom: 2px solid var(--color-gold);
     display: flex;
@@ -103,22 +56,15 @@ header.header, .header {
     z-index: 9999;
 }
 
-/* garantir boa margem dentro do header em telas grandes */
-.header .page-title,
-header.header .page-title {
+.header .page-title {
     font-size: 26px;
     font-weight: 700;
     color: var(--color-gold);
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-    margin: 0;
 }
 
-/* estilo do nav/links (mais específico) */
-.header .nav-link,
-header.header .nav a,
-header.header .nav-link {
+.header .nav-link {
     color: var(--color-gold);
     font-size: 16px;
     font-weight: 600;
@@ -128,24 +74,63 @@ header.header .nav-link {
     border: 2px solid var(--color-gold);
     transition: var(--transition);
     display: inline-block;
-    background: transparent;
 }
 
-/* hover elegante */
-.header .nav-link:hover,
-header.header .nav a:hover,
-header.header .nav-link:hover {
+.header .nav-link:hover {
     background-color: var(--color-gold);
     color: var(--bg-primary);
-    box-shadow: 0 0 10px rgba(212,160,86,0.45);
     transform: translateY(-2px);
 }
 
-/* quando houver só um link, centraliza no mobile */
-.header .nav {
+/* =========================================================
+   CONTAINER CENTRAL
+========================================================= */
+.agendar-container {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 980px;
+}
+
+.sec-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--color-light);
+}
+
+/* =========================================================
+   ABAS DOS DIAS DA SEMANA
+========================================================= */
+.tabs-dias {
+    margin: 30px auto 30px;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 12px;
-    align-items: center;
+}
+
+.tab-dia {
+    padding: 12px 22px;
+    background: var(--bg-card);
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+}
+
+.tab-dia:hover {
+    background: var(--color-gold);
+    color: var(--bg-primary);
+    transform: translateY(-3px);
+}
+
+.tab-ativa {
+    background: var(--color-gold) !important;
+    color: var(--bg-primary) !important;
+    transform: translateY(-3px);
 }
 
 /* =========================================================
@@ -153,22 +138,15 @@ header.header .nav-link:hover {
 ========================================================= */
 .horarios-grid {
     display: grid;
-
-    /* antes: minmax(120px, 1fr) — isso ESTICA e desalinha */
     grid-template-columns: repeat(auto-fit, minmax(120px, auto));
-
     gap: 20px;
 
     max-width: 800px;
-    margin: 80px auto;
+    margin: 40px auto;
 
-    /* centraliza o grid */
     justify-content: center;
-
-    /* centraliza cada botão na sua célula */
     justify-items: center;
 }
-
 
 /* =========================================================
    BOTÕES DE HORÁRIOS
@@ -179,16 +157,14 @@ header.header .nav-link:hover {
     font-size: 18px;
     text-align: center;
     border-radius: var(--radius);
-    text-decoration: none;
-    transition: var(--transition);
-    cursor: pointer;
-    display: block;
     width: 120px;
     box-sizing: border-box;
+    cursor: pointer;
+    transition: var(--transition);
     border: 2px solid transparent;
 }
 
-/* Disponível */
+/* disponível */
 .btn-horario {
     background-color: var(--bg-card);
     border: 2px solid var(--color-gold);
@@ -202,52 +178,13 @@ header.header .nav-link:hover {
     transform: translateY(-4px);
 }
 
-/* Indisponível */
+/* indisponível */
 .btn-indisponivel {
     background-color: var(--bg-gray);
     border: 2px solid #777;
     color: #ccc;
-    opacity: 0.55;
+    opacity: 0.6;
     cursor: not-allowed;
-    box-shadow: var(--shadow-soft);
-}
-
-
-/* =========================================================
-   BOTÃO PRINCIPAL (AGENDAR)
-========================================================= */
-.btn-agendar {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    background-color: var(--color-gold);
-    color: var(--bg-primary);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-card);
-    transition: var(--transition);
-}
-
-.btn-agendar:hover {
-    background-color: var(--color-gold-dark);
-    transform: translateY(-3px);
-}
-
-/* =========================================================
-   CONTAINER CENTRAL
-========================================================= */
-.agendar-container {
-    text-align: center;
-    margin: 40px 20px;
-    max-width: 980px;
-}
-
-/* sec-title */
-.sec-title {
-    font-size: 22px;
-    margin-bottom: 18px;
-    color: var(--color-light);
 }
 
 /* =========================================================
@@ -255,31 +192,20 @@ header.header .nav-link:hover {
 ========================================================= */
 .footer {
     margin-top: 40px;
-    padding: 18px 20px;
-    background: transparent;
+    padding: 20px;
     text-align: center;
-    font-size: 14px;
     color: #cfcfcf;
-    border-top: 1px solid rgba(255,255,255,0.03);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 /* =========================================================
    RESPONSIVIDADE
 ========================================================= */
-@media (max-width: 1768px) {
-    .horarios-grid {
-        gap: 15px;
-        width: 100%;
-    }
-
-    .btn-horario,
-    .btn-indisponivel {
-        font-size: 16px;
-        padding: 12px;
-    }
-
+@media (max-width: 768px) {
     .header {
-        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
     }
 
     .header .page-title {
@@ -287,39 +213,27 @@ header.header .nav-link:hover {
     }
 
     .header .nav-link {
-        font-size: 15px;
-        padding: 7px 12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .horarios-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 12px 16px;
-        text-align: center;
-    }
-
-    .header .page-title {
-        font-size: 18px;
-    }
-
-    .header .nav-link {
         font-size: 14px;
-        padding: 6px 10px;
+        padding: 6px 12px;
+    }
+
+    .tabs-dias {
+        gap: 8px;
+    }
+
+    .tab-dia {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .horarios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    }
+
+    .btn-horario,
+    .btn-indisponivel {
+        font-size: 16px;
+        padding: 12px;
+        width: 110px;
     }
 }
-
-/* =========================================================
-   DEBUG HELPERS (remova se quiser)
-   - Un-comment para ver se o header está sendo renderizado e para
-     confirmar que o CSS foi carregado (debug temporário).
-========================================================= */
-/*
-header.header { outline: 2px dashed magenta; }
-*/
