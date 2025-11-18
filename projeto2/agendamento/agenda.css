@@ -1,0 +1,325 @@
+/* HEADER */
+header {
+    background-color: #1a1a1c;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    color: #d4a056;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+header nav a {
+    color: #f5f5f5;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #d4a056;
+}
+
+/* BANNER */
+.banner {
+    background: url('../img/banner.jpg') center/cover no-repeat;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.banner h2 {
+    color: #d4a056;
+    font-size: 36px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+
+/* =========================================================
+   RESET & VARIÁVEIS
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #111;
+    --bg-card: #1a1a1c;
+    --bg-gray: #4a4a4a;
+
+    --color-light: #f5f5f5;
+    --color-gold: #d4a056;
+    --color-gold-dark: #b88941;
+
+    --radius: 10px;
+    --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.4);
+    --shadow-soft: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+    --transition: 0.3s ease;
+    --font-main: 'Arial', sans-serif;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--color-light);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 0; /* reserve if header is sticky */
+}
+
+/* =========================================================
+   HEADER ELEGANTE (INTEGRADO E FORTE)
+   - Usei seletores com maior especificidade para evitar override.
+   - position: sticky garante visibilidade ao rolar.
+========================================================= */
+header.header, .header {
+    width: 100%;
+    background-color: #0d0d0d; /* discreto, quase preto */
+    padding: 18px 28px;
+    border-bottom: 2px solid var(--color-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+/* garantir boa margem dentro do header em telas grandes */
+.header .page-title,
+header.header .page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    margin: 0;
+}
+
+/* estilo do nav/links (mais específico) */
+.header .nav-link,
+header.header .nav a,
+header.header .nav-link {
+    color: var(--color-gold);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    border: 2px solid var(--color-gold);
+    transition: var(--transition);
+    display: inline-block;
+    background: transparent;
+}
+
+/* hover elegante */
+.header .nav-link:hover,
+header.header .nav a:hover,
+header.header .nav-link:hover {
+    background-color: var(--color-gold);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(212,160,86,0.45);
+    transform: translateY(-2px);
+}
+
+/* quando houver só um link, centraliza no mobile */
+.header .nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* =========================================================
+   GRID DE HORÁRIOS
+========================================================= */
+.horarios-grid {
+    display: grid;
+
+    /* antes: minmax(120px, 1fr) — isso ESTICA e desalinha */
+    grid-template-columns: repeat(auto-fit, minmax(120px, auto));
+
+    gap: 20px;
+
+    max-width: 800px;
+    margin: 80px auto;
+
+    /* centraliza o grid */
+    justify-content: center;
+
+    /* centraliza cada botão na sua célula */
+    justify-items: center;
+}
+
+
+/* =========================================================
+   BOTÕES DE HORÁRIOS
+========================================================= */
+.btn-horario,
+.btn-indisponivel {
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    display: block;
+    width: 120px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+/* Disponível */
+.btn-horario {
+    background-color: var(--bg-card);
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    box-shadow: var(--shadow-card);
+}
+
+.btn-horario:hover {
+    background-color: var(--color-gold);
+    color: var(--bg-primary);
+    transform: translateY(-4px);
+}
+
+/* Indisponível */
+.btn-indisponivel {
+    background-color: var(--bg-gray);
+    border: 2px solid #777;
+    color: #ccc;
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: var(--shadow-soft);
+}
+
+
+/* =========================================================
+   BOTÃO PRINCIPAL (AGENDAR)
+========================================================= */
+.btn-agendar {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: var(--color-gold);
+    color: var(--bg-primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.btn-agendar:hover {
+    background-color: var(--color-gold-dark);
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   CONTAINER CENTRAL
+========================================================= */
+.agendar-container {
+    text-align: center;
+    margin: 40px 20px;
+    max-width: 980px;
+}
+
+/* sec-title */
+.sec-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+    color: var(--color-light);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    margin-top: 40px;
+    padding: 18px 20px;
+    background: transparent;
+    text-align: center;
+    font-size: 14px;
+    color: #cfcfcf;
+    border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+@media (max-width: 1768px) {
+    .horarios-grid {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .btn-horario,
+    .btn-indisponivel {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .header {
+        padding: 16px 20px;
+    }
+
+    .header .page-title {
+        font-size: 20px;
+    }
+
+    .header .nav-link {
+        font-size: 15px;
+        padding: 7px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .horarios-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+        text-align: center;
+    }
+
+    .header .page-title {
+        font-size: 18px;
+    }
+
+    .header .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+/* =========================================================
+   DEBUG HELPERS (remova se quiser)
+   - Un-comment para ver se o header está sendo renderizado e para
+     confirmar que o CSS foi carregado (debug temporário).
+========================================================= */
+/*
+header.header { outline: 2px dashed magenta; }
+*/
