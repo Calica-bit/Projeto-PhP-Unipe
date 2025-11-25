@@ -1,10 +1,10 @@
 {
     "terca": {
-        "09:00": "disponivel",
-        "10:00": "disponivel",
+        "09:00": "indisponivel",
+        "10:00": "indisponivel",
         "11:00": "indisponivel",
         "12:00": "ocupado",
-        "13:00": "disponivel",
+        "13:00": "ocupado",
         "14:00": "disponivel",
         "15:00": "indisponivel",
         "16:00": "disponivel",
