@@ -28,10 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Área Admin</h2>
         <?php if (!empty($erro)) echo "<p class='erro'>$erro</p>"; ?>
         <form method="POST">
-            <input type="text" name="login" placeholder="Login" required>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
+             <label>Usuário:</label><br>
+        <input type="text" name="login" required><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="senha" required><br><br>
+
+        <button type="submit">Entrar</button>
         </form>
     </div>
 </body>
 </html>
+
