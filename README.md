@@ -4,7 +4,7 @@ O nosso projeto é um site de uma barbearia / barbeiro, que nele apresentamos op
 
 O cliente pode agendar marcar e desmarcar horários, onde podemos alterar os horários disponíveis ou alterar as informações por meio do arquivo horarios.json
 
-Na parte de Admin do site , teremos opções de alterar os horários disponíveis.
+Na parte de Admin do site , teremos a opção de alterar os horários disponíveis.
 
 
 O grupo é composto por:
