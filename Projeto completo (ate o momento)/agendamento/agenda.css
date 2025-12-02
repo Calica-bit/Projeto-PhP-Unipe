@@ -1,0 +1,239 @@
+/* =========================================================
+   RESET & VARIÁVEIS
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #111;
+    --bg-card: #1a1a1c;
+    --bg-gray: #4a4a4a;
+
+    --color-light: #f5f5f5;
+    --color-gold: #d4a056;
+    --color-gold-dark: #b88941;
+
+    --radius: 10px;
+    --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.4);
+    --shadow-soft: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+    --transition: 0.3s ease;
+    --font-main: 'Arial', sans-serif;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--color-light);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding-top: 0;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header {
+    width: 100%;
+    background-color: #0d0d0d;
+    padding: 18px 28px;
+    border-bottom: 2px solid var(--color-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.header .page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.header .nav-link {
+    color: var(--color-gold);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    border: 2px solid var(--color-gold);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.header .nav-link:hover {
+    background-color: var(--color-gold);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   CONTAINER CENTRAL
+========================================================= */
+.agendar-container {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 980px;
+}
+
+.sec-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--color-light);
+}
+
+/* =========================================================
+   ABAS DOS DIAS DA SEMANA
+========================================================= */
+.tabs-dias {
+    margin: 30px auto 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tab-dia {
+    padding: 12px 22px;
+    background: var(--bg-card);
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+}
+
+.tab-dia:hover {
+    background: var(--color-gold);
+    color: var(--bg-primary);
+    transform: translateY(-3px);
+}
+
+.tab-ativa {
+    background: var(--color-gold) !important;
+    color: var(--bg-primary) !important;
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   GRID DE HORÁRIOS
+========================================================= */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, auto));
+    gap: 20px;
+
+    max-width: 800px;
+    margin: 40px auto;
+
+    justify-content: center;
+    justify-items: center;
+}
+
+/* =========================================================
+   BOTÕES DE HORÁRIOS
+========================================================= */
+.btn-horario,
+.btn-indisponivel {
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: var(--radius);
+    width: 120px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+/* disponível */
+.btn-horario {
+    background-color: var(--bg-card);
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    box-shadow: var(--shadow-card);
+}
+
+.btn-horario:hover {
+    background-color: var(--color-gold);
+    color: var(--bg-primary);
+    transform: translateY(-4px);
+}
+
+/* indisponível */
+.btn-indisponivel {
+    background-color: var(--bg-gray);
+    border: 2px solid #777;
+    color: #ccc;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #cfcfcf;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .header .page-title {
+        font-size: 20px;
+    }
+
+    .header .nav-link {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .tabs-dias {
+        gap: 8px;
+    }
+
+    .tab-dia {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .horarios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    }
+
+    .btn-horario,
+    .btn-indisponivel {
+        font-size: 16px;
+        padding: 12px;
+        width: 110px;
+    }
+}
