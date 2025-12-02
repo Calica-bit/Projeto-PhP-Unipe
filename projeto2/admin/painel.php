@@ -14,7 +14,7 @@ if (isset($_POST['dia']) && isset($_POST['hora'])) {
     
     $statusAtual = $horarios[$dia][$hora];
 
-    
+    // alterna entre disponível ↔ indisponível
     if ($statusAtual === "disponivel") {
         $horarios[$dia][$hora] = "indisponivel";
     } else {
@@ -57,4 +57,3 @@ if (isset($_POST['dia']) && isset($_POST['hora'])) {
     </div>
 </body>
 </html>
-
