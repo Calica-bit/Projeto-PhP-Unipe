@@ -19,7 +19,7 @@ if ($horarios[$dia][$hora] === "ocupado") {
     // Marca como ocupado e salva
     $horarios[$dia][$hora] = "ocupado";
     file_put_contents($arquivo, json_encode($horarios, JSON_PRETTY_PRINT));
-    $mensagem = "Horário reservado com sucesso!";
+    $mensagem = "Para confirmar entre em contato conosco :</br></br> (83) 94002-8922";
 }
 ?>
 
@@ -90,3 +90,4 @@ if ($horarios[$dia][$hora] === "ocupado") {
 
 </body>
 </html>
+
